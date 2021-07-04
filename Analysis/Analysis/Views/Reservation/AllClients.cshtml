@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Client>
+@{
+}
+<div class="text-center">
+    @Html.Partial("Pages", Model)
+    @{
+        ViewBag.searches = new string[] { "Name","Age", "Gender","Address","PhoneNumber","Doctor","ClientCode","RecievedDate" };
+        ViewBag.sorts = new string[] { "Name", "Age", "Gender", "Address", "PhoneNumber", "Doctor", "ClientCode", "RecievedDate" };
+    }
+    @Html.Partial("PageOptions", Model)
+</div>
+<div class="container-fluid mt-3">
+
+    <form method="post" asp-action="DeleteClient">
+        <table class="table">
+            <thead class="thead-dark bg-dark text-white">
+                <tr>
+                    <td>Name</td>
+                    <td>Age</td>
+                    <td>Gender</td>
+                    <td>Address</td>
+                    <td>Phone Number</td>
+                    <td>Doctor</td>
+                    <td>Code</td>
+                    <td>Recieved Date</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Age</td>
+                        <td>@item.Gender</td>
+                        <td>@item.Address</td>
+                        <td>@item.PhoneNumber</td>
+                        <td>@item.Doctor</td>
+                        <td>@item.ClientCode</td>
+                        <td>@item.RecievedDate</td>
+                        <td>
+                            <input type="hidden" name="Id" value="@item.Id"/>
+                            <a asp-action="EditClient" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+</div>

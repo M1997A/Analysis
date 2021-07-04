@@ -1,0 +1,55 @@
+﻿@model IEnumerable<AnalysisFeatures>
+@{
+}
+<div class="container">
+    <div class="row m-2 p-2 bg-dark text-white rounded">
+        <div class="col-1">Id</div>
+        <div class="col">Name</div>
+        <div class="col">Normal Range</div>
+        <div class="col">Measuring Unit</div>
+        <div class="col-3 text-center">Actions</div>
+    </div>
+    @*&& TempData["EditId"] == null
+    || (TempData["EditId"] != null && (int)TempData["EditId"] == af.Id)*@
+    @if (ViewBag.EditId == null)
+    {
+        <form asp-action="AddFeature" method="post">
+            <input type="hidden" name="AnalysisTypeId" value="@ViewBag.AnalysisTypeId" />
+            @Html.Partial("FeaturesEditor", new AnalysisFeatures())
+        </form>
+    }
+    @foreach (var af in Model)
+    {
+        if (af.Id == ViewBag.EditId)
+        {
+            <form asp-action="UpdateFeature" method="post">
+                <input type="hidden" name="AnalysisTypeId" value="@ViewBag.AnalysisTypeId" />
+                <input type="hidden" name="Id" value="@af.Id" />
+                @Html.Partial("FeaturesEditor", af)
+            </form>
+        }
+        else
+        {
+            <div class="row p-2">
+                <div class="col-1">@af.Id</div>
+                <div class="col">@af.Name</div>
+                <div class="col">@af.NormalRange</div>
+                <div class="col">@af.MeasruingUnit</div>
+                <div class="col-3 text-center">
+                    @*<form method="get" asp-action="EditFeature">
+                            <input type="hidden" name="AFId" value="@af.Id" />
+                            <input type="hidden" name="AId" value="@ViewContext.RouteData.Values["id"]" />
+                            <button type="submit" class="btn btn-primary btn-sm">Edit</button>
+                        </form>*@
+                    <form asp-action="DeleteFeature" method="post">
+                        <input type="hidden" name="AnalysisTypeId" value="@af.AnalysisTypeId" />
+                        <input type="hidden" name="Id" value="@af.Id" />
+                        <a class="btn btn-sm btn-primary" asp-action="EditFeature" asp-route-id="@ViewBag.AnalysisTypeId"
+                           asp-route-AFId="@af.Id">Edit</a>
+                        <button class="btn btn-sm btn-danger" type="submit">Delete</button>
+                    </form>
+                </div>
+            </div>
+        }
+    }
+</div>

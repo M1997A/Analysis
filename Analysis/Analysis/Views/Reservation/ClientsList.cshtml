@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ClientsListVM>
+@{
+}
+<div class="container">
+    <div class="alert alert-dark bg-dark text-white text-center"><h3>Clients Analysis</h3></div>
+    <table class="table">
+        <thead class="thead-dark bg-dark text-white">
+            <tr>
+                <td>Id</td>
+                <td>Client Name</td>
+                <td>Analysis Name</td>
+                <td>Recieved Date</td>
+                <td>Client Code</td>
+                <td class="text-center">Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count() == 0)
+            {
+                <tr>
+                    <td colspan="6" class="text-center">No Analysis</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CAId</td>
+                        <td>@item.ClientName</td>
+                        <td>@item.AnalysisName</td>
+                        
+                        <td>@item.RecievedDate.ToString("dd/MM/yyyy")</td>
+                        <td>@item.ClientCode</td>
+                        <td class="text-center">
+                            <form method="get" asp-action="WriteResult">
+                                <input type="hidden" name="ClientAnalysisId" value="@item.CAId" />
+                                <input type="hidden" name="AnalysisTypeId" value="@item.AnalysisTypeId" />
+                                <input type="hidden" name="ClientName" value="@item.ClientName" />
+                                <button type="submit" class="btn btn-sm btn-warning">Enter Result</button>
+                            </form> 
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

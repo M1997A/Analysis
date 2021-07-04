@@ -1,0 +1,58 @@
+﻿@model List<IEnumerable<CResult>>
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css"  rel="stylesheet"/>
+</head>
+<body style="border:1px solid #1abc9c">
+
+    <div class="container">
+
+
+        <div class="row mt-2">
+            <div class="col-2">
+                <div style="width:188px;height:50px;border-bottom:2px dotted red " class="text-center"><h1><span style="color:red">Zag</span><span style="color:#1abc9c">Lonia</span></h1></div>
+                @*<img src="~/images/logo2.png" style="width:188px;height:50px" />*@
+            </div>
+            <div class="col-3">
+                Name : @(Model?.FirstOrDefault()?.FirstOrDefault()?.ClientName ?? "")
+
+            </div>
+            <div class="col-2">
+                Doctor : @(Model?.FirstOrDefault()?.FirstOrDefault()?.ClientDoctor ?? "")
+
+            </div>
+        </div>
+        <hr />
+
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Value</td>
+                    <td>Unit</td>
+                    <td>Normal Range</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                foreach (var result in item)
+                {
+                    <tr>
+                        <td>@result.Name</td>
+                        <td>@result.Value</td>
+                        <td>@result.MeasuringUnit</td>
+                        <td>@result.NormalRange</td>
+                    </tr>
+            }
+        }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

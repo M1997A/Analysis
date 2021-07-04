@@ -1,0 +1,38 @@
+﻿@model CreateUserVM
+@{
+}
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="text-center"><h3>Create New User</h3></div>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <form asp-action="CreateUser" method="post">
+                <div class="form-group">
+                    
+                    <label asp-for="UserName"></label>
+                    <div><span asp-validation-for="UserName" class="text-danger"></span></div>
+                    <input class="form-control" asp-for="UserName" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" >Password</label>
+                    <div><span asp-validation-for="Password"  class="text-danger"></span></div>
+                    <input class="form-control" asp-for="Password" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="IsAdmin">IsAdmin</label>
+                    <div><span asp-validation-for="IsAdmin"  class="text-danger"></span></div>
+                    <input class="form-check-inline" asp-for="IsAdmin" />
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-sm btn-success" type="submit">Submit</button>
+                    <a class="btn btn-sm btn-danger" asp-action="Index">Cancel</a>
+                </div>
+            </form>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+@{
+}

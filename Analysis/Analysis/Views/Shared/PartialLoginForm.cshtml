@@ -1,0 +1,13 @@
+﻿@model LoginVM
+@{
+}
+<form asp-action="Login" asp-controller="Home" method="post" class="form-inline m-0 p-0">
+
+    
+    <input class="form-control w-25 mb-2 mr-sm-2 rounded-pill" asp-for="UserName" placeholder="UserName" required>
+
+    
+    <input class="form-control w-25 mb-2 mr-sm-2 rounded-pill" asp-for="Password" placeholder="Password" required>
+
+    <button class="btn btn-primary mr-sm-2 rounded-pill mb-2" type="submit">Login</button>
+</form>

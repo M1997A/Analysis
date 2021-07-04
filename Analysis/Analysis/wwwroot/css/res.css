@@ -1,0 +1,158 @@
+.headres
+{
+    padding: 300px 0 30px 0;
+    background-image: url(../images/image1.jpg);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    
+}
+.headwarn
+{
+    padding: 300px 0 30px 0;
+    background-image: url(../images/image0.jpg);
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+.headlibrary {
+    padding: 300px 0 30px 0;
+    background-image: url(../images/image7.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.headabout {
+    padding: 300px 0 30px 0;
+    background-image: url(../images/image4.jpg);
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.result
+{
+    width:1200px;
+    margin-left:10% 
+}
+/*input[type=number]
+{
+    width: 500px;
+    padding: 10px;
+    margin: 10px 20px;
+    text-transform: capitalize
+     
+}
+
+input[type=submit]
+{
+    color: ;
+    width: 200px;
+    margin-left:2%;
+    background-color:#1abc9c;
+}*/
+.copyright
+{
+    margin-top: 20px;
+    font-size: 30px;
+    text-align: center;
+    text-transform: capitalize;
+    padding-bottom: 20px;
+    
+}
+.main 
+{
+    height: 400px;
+}
+.separt
+{
+    width: 50%;
+}
+h3
+{
+    text-transform: capitalize;
+    color: #22abcc;
+    font-size: 25px;
+}
+/*table 
+{
+    font-family: arial, sans-serif;
+    border-collapse:collapse;
+    width: 80%;
+    margin: 0 0 5% 10%
+}*/
+
+/*td, th 
+{
+    border: 2px solid #979797;
+    text-align: left;
+    padding: 8px;
+}*/
+
+/*tr:nth-child(odd) 
+{
+    background-color: #efefef;
+}*/
+/*th
+{
+    background-color: #eee;
+}*/
+#more
+{
+    display: none;
+    color: aqua;
+}
+button
+{
+    background-color: #1abc9c;
+    border: 1px solid #000;;
+    outline:none;
+    color: #fff;
+    font-size: 25px;
+    padding: 5px
+}
+.words 
+{
+    width: 100%;
+    text-align: right;
+    font-size: 20px;
+    font-weight:normal;
+    font-family: monospace;
+    line-height: 1.5;
+    color: #994d00;
+    padding-bottom: 25px;
+}
+.words ul li
+{
+    direction: rtl;
+    list-style:disc;
+}
+.words h5
+{
+    font-size: 25px;
+    color: #000;
+}
+.con
+{
+    font-size: 25px;
+    color: #996633;
+    text-align: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

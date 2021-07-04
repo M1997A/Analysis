@@ -1,0 +1,31 @@
+﻿@model AnalysisFeatures
+@{
+}
+<div class="row p-2">
+    <div class="col-1"></div>
+
+    <div class="col">
+        <span class="text-danger" asp-validation-for="Name"></span>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="col">
+        <span class="text-danger" asp-validation-for="NormalRange"></span>
+        <input asp-for="NormalRange" class="form-control" />
+    </div>
+    <div class="col">
+        <span class="text-danger" asp-validation-for="MeasruingUnit"></span>
+        <input asp-for="MeasruingUnit" class="form-control" />
+    </div>
+    <div class="col-3 text-center">
+        @if (Model.Id == 0)
+        {
+            <button type="submit" class="btn btn-sm btn-success">Add</button>
+            <a asp-action="AllAnalysis" class="btn btn-sm btn-warning">Cancel</a>
+        }
+        else
+        {
+            <button type="submit" class="btn btn-sm btn-primary">Save</button>
+            <a asp-action="Features" asp-route-id="@Model.AnalysisTypeId" class="btn btn-warning btn-sm">Cancel</a>
+        }
+    </div>
+</div>

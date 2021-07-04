@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/report.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap-select-1.13.7/dist/css/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="~/css/jquery.bxslider.css">
+    <link rel="stylesheet" href="~/css/normalize.css">
+    <link rel="stylesheet" href="~/css/home1.css">
+    <link rel="stylesheet" href="~/css/rees1.css"/>
+    <!--fonts-->
+    <link rel="stylesheet" href="~/css/fonts/all.min.css">
+
+
+
+</head>
+<body>
+    <div class="row mb-2 m-0 p-1 bg-info">
+        @*<div class="col-1"></div>*@
+        <div class="col-2">
+            <img src="~/images/logo2.png" style="width:170px;height:50px" />
+        </div>
+        @if (User?.Identity?.IsAuthenticated ?? false)
+        {
+        <div class="col-7 mt-2">
+            <a asp-controller="Home" asp-action="Index" class="btn btn-dark rounded-pill">Home</a>
+            <a asp-controller="Reservation" asp-action="Reserve" class="btn btn-dark rounded-pill">Reservation</a>
+            <a asp-controller="Reservation" asp-action="ClientsList" class="btn btn-dark rounded-pill">Clients</a>
+            <a asp-controller="Reservation" asp-action="AllClients" class="btn btn-dark rounded-pill">All Clients</a>
+            <a asp-controller="Admin" asp-action="AllAnalysis" class="btn btn-dark rounded-pill">Analysis List</a>
+            <a asp-controller="Admin" asp-action="AddAnalysis" class="btn btn-dark rounded-pill">Add Analysis</a>
+            <a asp-controller="Home" asp-action="ClientResult" class="btn btn-dark rounded-pill">Show Result</a>
+            @if (User.IsInRole("Admins"))
+            {
+                <a asp-action="Index" asp-controller="Account" class="btn btn-dark rounded-pill">Account</a>
+            }
+
+        </div>
+            <div class="col-2 mt-2">
+
+                <form asp-action="Logout" asp-controller="Home" method="post">
+                    @if (User.IsInRole("Admins"))
+                    {
+                        <a asp-action="EditAdmin" asp-controller="Account" class="btn btn-success  rounded-pill">Details</a>
+                    }
+                    <button type="submit" class="btn btn-warning rounded-pill">Logout</button>
+                </form>
+
+
+            </div>
+        }
+        else
+        {
+            <div class="col-6 mt-2">
+                <a asp-controller="Home" asp-action="Index" class="btn btn-dark rounded-pill">Home</a>
+                <a asp-controller="Home" asp-action="AboutUs" class="btn btn-dark rounded-pill">About Us</a>
+                <a asp-controller="Home" asp-action="AnalyticalWarnings" class="btn btn-dark rounded-pill">Analytical warnings</a>
+                <a asp-controller="Home" asp-action="AnalysisLibrary" class="btn btn-dark rounded-pill">Library of analysis</a>
+                <a asp-controller="Home" asp-action="ClientResult" class="btn btn-dark rounded-pill">Show Result</a>
+            </div>
+            <div class="col-4 mt-2">
+                @Html.Partial("PartialLoginForm")
+            </div>
+        }
+    </div>
+    <hr />
+
+
+    <div class="m-3">
+        @RenderBody()
+    </div>
+    <script src="~/lib/Jquery/dist/jquery.min.js"></script>
+    <script src="~/js/jquery.bxslider.min.js"></script>
+    <script src="~/js/jquery.nicescroll.min.js"></script>
+    <script src="~/js/scripts.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.fn.selectpicker.Constructor.BootstrapVersion = '4';
+        });
+    </script>
+    <script src="~/lib/popper.js/dist/umd/popper.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+
+    <script src="~/lib/bootstrap-select-1.13.7/dist/js/bootstrap-select.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+﻿@model ClientAnalysisVM
+@{
+}
+<div class="container">
+    <div class="alert alert-danger bg-dark text-white text-center"><h3>New Reservation</h3></div>
+    <form method="post" asp-action="Reserve">
+        <div class="row m-2">
+
+            <div class="col-5">
+
+                <div><span asp-validation-for="Client.Name" class="text-danger"></span></div>
+                <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" style="width:80px" id="basic-addon1">Name</span>
+                    </div>
+                    <input asp-for="Client.Name" class="form-control" aria-describedby="basic-addon1">
+                </div>
+                <div><span asp-validation-for="Client.Address" class="text-danger"></span></div>
+                <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" style="width:80px" id="basic-addon2">Address</span>
+                    </div>
+                    <input asp-for="Client.Address" class="form-control" aria-describedby="basic-addon2">
+                </div>
+                <div><span asp-validation-for="Client.Age" class="text-danger"></span></div>
+                <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" style="width:80px" id="basic-addon3">Age</span>
+                    </div>
+                    <input asp-for="Client.Age" class="form-control" aria-describedby="basic-addon3">
+                </div>
+
+                @*<div class="input-group mb-3">
+
+            <div class="input-group-prepend">
+                <span class="input-group-text" style="width:80px" id="basic-addon4">Gender</span>
+            </div>
+            <input asp-for="Client.Gender" class="form-control" aria-describedby="basic-addon4">
+        </div>*@
+                <div><span asp-validation-for="Client.PhoneNumber" class="text-danger"></span></div>
+                <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" style="width:80px" id="basic-addon5">Phone</span>
+                    </div>
+                    <input asp-for="Client.PhoneNumber" class="form-control" aria-describedby="basic-addon5">
+                </div>
+
+                <div><span asp-validation-for="Client.Diseases" class="text-danger"></span></div>
+                <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" style="width:80px" id="basic-addon6">Diseases</span>
+                    </div>
+                    <input asp-for="Client.Diseases" class="form-control" aria-describedby="basic-addon6">
+                </div>
+
+            </div>
+            <div class="col-1"></div>
+            <div class="col-5">
+               
+                <div><span asp-validation-for="Client.Doctor" class="text-danger"></span></div>
+                <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" style="width:80px" id="basic-addon7">Doctor</span>
+                    </div>
+                    <input asp-for="Client.Doctor" class="form-control" aria-describedby="basic-addon7">
+                </div>
+
+                <div><span asp-validation-for="Client.RecievedDate" class="text-danger"></span></div>
+                <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" style="width:80px" id="basic-addon8">Date</span>
+                    </div>
+                    <input type="date" asp-for="Client.RecievedDate" class="form-control" aria-describedby="basic-addon8">
+                </div>
+
+                <div><span asp-validation-for="Client.Gender" class="text-danger"></span></div>
+                <div class="input-group mb-3 border rounded">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" style="width:80px" id="basic-addon8">Gender</span>
+                    </div>
+                    <input type="radio" id="Male" name="Client.Gender" value="Male" class="m-2 mt-3">
+                    <label for="Male" class="mt-2">Male</label>
+
+
+                    <input type="radio" id="Female" name="Client.Gender" value="Female" class="m-2 mt-3">
+                    <label for="Female" class="mt-2">Female</label>
+
+                </div>
+                @*<div class="form-group border rounded" style="border-color:lightgray">
+
+                    <input type="radio" id="Male" name="Client.Gender" value="Male" class="mt-2 mb-2 ml-2">
+                    <label for="Male">Male</label>
+
+
+                    <input type="radio" id="Female" name="Client.Gender" value="Female" class="mt-2 mb-2 ml-2">
+                    <label for="Female">Female</label>
+
+                </div>*@
+
+                <div class="form-group border rounded" style="border-color:lightgray">
+                    <div><span asp-validation-for="ClientAnalysis.AnalysisIds" class="text-danger"></span></div>
+                    <select asp-for="ClientAnalysis.AnalysisIds" class="selectpicker form-control" title="Select Analysis" multiple data-live-search="true">
+                        @foreach (var item in Model.AllAnalysis)
+            {
+                <option value="@item.Id">@item.Name</option>
+}
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <button class="btn btn-block btn-success" type="submit">Add</button>
+                        </div>
+                        <div class="col-6">
+                            <a class="btn btn-block btn-warning" asp-controller="Home" asp-action="Index">Cancel</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>

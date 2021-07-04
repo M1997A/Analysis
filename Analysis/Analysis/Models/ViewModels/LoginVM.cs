@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Analysis.Models.ViewModels
+{
+    public class LoginVM
+    {
+        [Required(ErrorMessage ="UserName Required")]
+        public string UserName { get; set; }
+        [Required(ErrorMessage = "Password Required")]
+        [UIHint("Password")]
+        public string Password { get; set; }
+    }
+}
